@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerContoller : MonoBehaviour
 {
@@ -10,11 +11,16 @@ public class PlayerContoller : MonoBehaviour
     Vector3 velocity;
     Rigidbody rb;
     Camera viewCam;
+
+    [SerializeField] float maxHealth = 100f;
+    [SerializeField] Image healthOrb;
+    private float currentHealth = 0f;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         viewCam = Camera.main;
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -32,5 +38,34 @@ public class PlayerContoller : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
+    }
+
+    public float ReturnMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public float ReturnCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public void  ReceiveDamage(float value)
+    {
+        if (currentHealth > 0)
+        {
+            currentHealth -= value;
+            if (healthOrb != null)
+            {
+                healthOrb.fillAmount = currentHealth / maxHealth;
+            }
+        }
+        else
+        {
+            //death animation
+            //stop player movement
+            //death audio clip
+            Destroy(this.gameObject);
+        }
     }
 }

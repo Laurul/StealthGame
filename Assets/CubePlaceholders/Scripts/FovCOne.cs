@@ -24,12 +24,12 @@ public class FovCOne : MonoBehaviour
     [SerializeField] DetectShadow playerInShadow;
 
     bool alert = false;
-   EnemyPath enemy;
+   EnemyAI enemy;
  
     float f=0;
     private void Start()
     {
-        enemy = GetComponent<EnemyPath>();
+        enemy = GetComponent<EnemyAI>();
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
 
@@ -60,8 +60,8 @@ public class FovCOne : MonoBehaviour
                 if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
                 {
                     targets.Add(target);
-                    alert = true;
-
+                    //alert = true;
+                    GameManager.Instance.alert = true;
                    
                    
                     //tell character to run to target location, shoot target, etc;
@@ -72,8 +72,8 @@ public class FovCOne : MonoBehaviour
         }
         if (targetsInViewRadius.Length== 0)
         {
-
-            alert = false;
+            GameManager.Instance.alert = false;
+           // alert = false;
         }
     }
 
@@ -82,39 +82,42 @@ public class FovCOne : MonoBehaviour
     {
         //print(targets.Count);
         
-        if (alert)
-        { 
-            if (playerInShadow.ReturnCover())
-            {
-                enemy.GetComponentInChildren<FadeColor>().IncreaseOpacity(0.01f);
-            }
-            else
-            {
-                enemy.GetComponentInChildren<FadeColor>().IncreaseOpacity(0.004f);
-            }
+        //if (alert)
+        //{ 
+        //    if (playerInShadow.ReturnCover())
+        //    {
+        //        enemy.GetComponentInChildren<FadeColor>().IncreaseOpacity(0.01f);
+        //    }
+        //    else
+        //    {
+        //        enemy.GetComponentInChildren<FadeColor>().IncreaseOpacity(0.004f);
+        //    }
            
-        }
-        
-        if(alert==false)
-        {
-            
-            enemy.GetComponentInChildren<FadeColor>().IncreaseFade(0.01f);
-        }
-
-
-        if (enemy.GetComponentInChildren<FadeColor>().GetAlphaValue() >= 1.0f)
-            enemy.FollowPlayer();
-
-        if (enemy.GetComponentInChildren<FadeColor>().GetAlphaValue() <= 0.0f)
-        {
-            // new WaitForSeconds(0.2f);
-            enemy.StopFollowPlayer();
-        }
-        //if(targets.Count>0)
-        //foreach(Transform target in targets)
-        //{
-        //    print(target.gameObject.name);
         //}
+        
+        //if(alert==false)
+        //{
+            
+        //    enemy.GetComponentInChildren<FadeColor>().IncreaseFade(0.01f);
+        //}
+
+
+        //if (enemy.GetComponentInChildren<FadeColor>().GetAlphaValue() >= 1.0f)
+        //    // enemy.FollowPlayer();
+        //    enemy.changeTarget = true;
+           
+
+        //if (enemy.GetComponentInChildren<FadeColor>().GetAlphaValue() <= 0.0f)
+        //{
+        //    enemy.changeTarget = false;
+        //    // new WaitForSeconds(0.2f);
+        //    //enemy.StopFollowPlayer();
+        //}
+        ////if(targets.Count>0)
+        ////foreach(Transform target in targets)
+        ////{
+        ////    print(target.gameObject.name);
+        ////}
     }
 
     private void LateUpdate()

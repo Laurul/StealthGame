@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DetectShadow : MonoBehaviour
 {
-    public Light sun;
+    public Light lightSource;
 
     private MeshRenderer mesh;
     private RaycastHit hit;
-    private bool underSun = true;
+    private bool hitsLight = true;
 
     // Use this for initialization
     void Start()
@@ -19,8 +19,8 @@ public class DetectShadow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        underSun =true;
-        Vector3 sunDir = sun.transform.forward;
+        hitsLight =true;
+        Vector3 sunDir = lightSource.transform.forward;
         sunDir.Normalize();
         sunDir *= 100;
 
@@ -37,20 +37,20 @@ public class DetectShadow : MonoBehaviour
             else
             {
                 Debug.DrawLine(child.position, child.position - sunDir, Color.green);
-                underSun =false;
+                hitsLight =false;
             }
 
         }
 
 
 
-        if (underSun)
+        if (hitsLight)
         {
-            mesh.material.color = Color.blue;
+            mesh.material.color = Color.white;
         }
         else
         {
-            mesh.material.color = Color.green;
+            mesh.material.color = Color.cyan;
         }
 
      
@@ -59,6 +59,6 @@ public class DetectShadow : MonoBehaviour
 
     public bool ReturnCover()
     {
-        return underSun;
+        return hitsLight;
     }
 }
