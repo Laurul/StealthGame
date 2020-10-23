@@ -13,15 +13,21 @@ public class ChaseState : IState
         }
         ChaseAfterTarget(enemy);
 
-        if (enemy.inRange)
+        if (enemy.inRange == true)
             return enemy.attack;
         else if (enemy.changeTarget == false)
-            return enemy.patrol;
+           return enemy.investigate;
         else return enemy.chase;
+
+        //  else if (enemy.isInvestigating==true)//||enemy.player==null)// if (enemy.changeTarget == false||enemy.player==null)->patrol
+        //return enemy.investigate;
     }
 
     private void ChaseAfterTarget(EnemyAI enemy)
     {
+        enemy.enemyAnimator.SetBool("EnemySpotted", true);
+        enemy.enemyAnimator.SetBool("InRange", false);
+        if(enemy.player != null)
         enemy.navAgent.destination=enemy.player.position;
     }
 }

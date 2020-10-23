@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
 {
 
 
-   
+     public int[] allPaths;
 
 
 
@@ -30,20 +30,25 @@ public class EnemyAI : MonoBehaviour
     public ChaseState chase = new ChaseState();
     public AttackState attack = new AttackState();
     public InvestigateState investigate = new InvestigateState();
-
+    public HitScanGun gun;
     [HideInInspector] public Transform currentTarget;
     [HideInInspector] public bool changeTarget = false;
     [HideInInspector] public bool inRange = false;
     [HideInInspector] public NavMeshAgent navAgent;
     [HideInInspector] public bool isIdle = false;
+    [HideInInspector] public bool isInvestigating = false;
 
     [HideInInspector] public int index = 0;
-
+    [HideInInspector] public Animator enemyAnimator;
+    
 
     private void OnEnable()
     {
+        enemyAnimator = GetComponent<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
         currentState = patrol;
+        allPaths =new int[] { 0,1,2,3,4,5,6,3,2,4,5,6,0,1,2,3,6};
+
     }
 
     // Update is called once per frame
@@ -51,5 +56,6 @@ public class EnemyAI : MonoBehaviour
     {
         currentState = currentState.ActivateState(this);
         nameOfCurrentState = currentState.ToString();
+        print(nameOfCurrentState);
     }
 }

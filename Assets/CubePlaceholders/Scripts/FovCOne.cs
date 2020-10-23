@@ -73,7 +73,8 @@ public class FovCOne : MonoBehaviour
         if (targetsInViewRadius.Length== 0)
         {
             GameManager.Instance.alert = false;
-           // alert = false;
+           
+            // alert = false;
         }
     }
 

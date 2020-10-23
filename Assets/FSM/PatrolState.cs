@@ -15,31 +15,54 @@ public class PatrolState : IState
         PatrolArea(enemy);
 
 
+        //if (enemy.isIdle)
+        //    return enemy.idle;
+        //else if (enemy.changeTarget==true)
+        //    return enemy.chase;
+        //else return enemy.patrol;
         if (enemy.isIdle)
             return enemy.idle;
-        else if (enemy.changeTarget==true)
+        else if (enemy.changeTarget == true)
             return enemy.chase;
+        else if (enemy.changeTarget == false && enemy.isInvestigating == true)
+            return enemy.investigate;
         else return enemy.patrol;
 
     }
 
     private void PatrolArea(EnemyAI enemy)
     {
-        enemy.navAgent.SetDestination(enemy.targets[enemy.index].position);
+        enemy.enemyAnimator.SetBool("Idle", false);
+        enemy.enemyAnimator.SetTrigger("FinishedInvestigation");
+        enemy.navAgent.SetDestination(enemy.targets[enemy.allPaths[enemy.index]].position);
         if (HasReachedDestination(enemy))
         {
-            if (enemy.index < enemy.targets.Length - 1)
+            int i = enemy.allPaths[enemy.index];
+            Debug.Log(i);
+            //if (enemy.index < enemy.targets.Length - 1)
+            //{
+            //    enemy.index++;
+            //    enemy.navAgent.destination = enemy.targets[enemy.index].position;
+            //}
+            //else
+            //{
+            //    enemy.index = 0;
+            //    enemy.navAgent.destination = enemy.targets[enemy.index].position;
+            //}
+            if (enemy.index < enemy.allPaths.Length-1)
             {
                 enemy.index++;
-                enemy.navAgent.destination = enemy.targets[enemy.index].position;
+                enemy.navAgent.destination = enemy.targets[enemy.allPaths[enemy.index]].position;
             }
             else
             {
                 enemy.index = 0;
-                enemy.navAgent.destination = enemy.targets[enemy.index].position;
+                enemy.navAgent.destination = enemy.targets[0].position;
             }
         }
-    
+
+
+                //make idle bool true at random times;
     }
 
     private bool HasReachedDestination(EnemyAI enemy)

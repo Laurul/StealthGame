@@ -1,19 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerContoller : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] float movementSpeed=10;
+    [SerializeField] float movementSpeed = 10;
     Animator anim;
     Vector3 velocity;
     Rigidbody rb;
     Camera viewCam;
-
+    Vector3 rotation;
     [SerializeField] float maxHealth = 100f;
     [SerializeField] Image healthOrb;
+    [SerializeField] PlayerAttack selectAttack;
+    [SerializeField] SpawnClone cloneAttack;
+    [SerializeField] Animator playerAnimator;
     private float currentHealth = 0f;
     void Start()
     {
@@ -26,18 +27,34 @@ public class PlayerContoller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
-        Vector3 mousePos = viewCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, viewCam.transform.position.y));
-        transform.LookAt(mousePos + Vector3.up * transform.position.y);
-       
+        cloneAttack.index = selectAttack.index;
+        //Vector3 mousePos = viewCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, viewCam.transform.position.y));
+
+        //print(mousePos);
+        // transform.LookAt(mousePos + Vector3.up * transform.position.y);
+
         velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * movementSpeed;
-       
-        
+
+        //transform.LookAt(transform.position + new Vector3(velocity.x, 0, velocity.z));
     }
 
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
+        print(velocity.sqrMagnitude);
+        if (velocity.sqrMagnitude != 0)
+        {
+            playerAnimator.SetBool("IsWalking", true);
+            Quaternion forwardRotation = Quaternion.LookRotation(velocity);
+            rb.MoveRotation(forwardRotation);
+
+        }
+        else
+        {
+            playerAnimator.SetBool("IsWalking", false);
+        }
+
+        
     }
 
     public float ReturnMaxHealth()
@@ -50,7 +67,7 @@ public class PlayerContoller : MonoBehaviour
         return currentHealth;
     }
 
-    public void  ReceiveDamage(float value)
+    public void ReceiveDamage(float value)
     {
         if (currentHealth > 0)
         {
@@ -62,6 +79,7 @@ public class PlayerContoller : MonoBehaviour
         }
         else
         {
+            playerAnimator.SetBool("isDead", true);
             //death animation
             //stop player movement
             //death audio clip

@@ -24,6 +24,7 @@ public class IdleState : IState
     private void DoIdleMotion(EnemyAI enemy)
     {
         //enemy.navAgent.SetDestination(enemy.player.position);
+        //do idle bool false as soon as you finish the idle animation
     }
     
 }

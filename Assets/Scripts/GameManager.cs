@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] ScoreManager scoreManager;
     int totalEnemies;
     int currentEnenmies;
+    float timer = 2.0f;
+    bool seen = false;
     //[Header("UI Properties")]
     //UI health orb, UI energy, score board points, multypliers etc;
     // int score=0;
@@ -94,6 +96,7 @@ public class GameManager : MonoBehaviour
         {
             if (alert)
             {
+                Enemy.changeTarget = true;
                 if (playerInShadow.ReturnCover())
                 {
                     Enemy.GetComponentInChildren<FadeColor>().IncreaseOpacity(0.01f);
@@ -107,15 +110,18 @@ public class GameManager : MonoBehaviour
 
             if (alert == false)
             {
-
+                Enemy.changeTarget = false;
                 Enemy.GetComponentInChildren<FadeColor>().IncreaseFade(0.01f);
             }
 
 
             if (Enemy.GetComponentInChildren<FadeColor>().GetAlphaValue() >= 1.0f)
             {
+                seen = true;
                 // enemy.FollowPlayer();
-                Enemy.changeTarget = true;
+                Enemy.inRange = true;
+
+                
                 scoreManager.noDetection = false;
             }
 
@@ -123,10 +129,29 @@ public class GameManager : MonoBehaviour
 
             if (Enemy.GetComponentInChildren<FadeColor>().GetAlphaValue() <= 0.0f)
             {
-                Enemy.changeTarget = false;
+                Enemy.inRange = false;
+                
+                if (seen)
+                {
+                    Enemy.isInvestigating = true;
+
+                    timer -= Time.deltaTime;
+                    print("timer: " + timer);
+                    if (timer <= 0f)
+                    {
+                        Enemy.isInvestigating = false;
+                        timer = 2.0f;
+                        seen = false;
+                    }
+                }
+             
+
+
+
                 // new WaitForSeconds(0.2f);
                 //enemy.StopFollowPlayer();
             }
+
             //if(targets.Count>0)
             //foreach(Transform target in targets)
             //{

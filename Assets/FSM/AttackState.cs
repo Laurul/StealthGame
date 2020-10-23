@@ -22,6 +22,10 @@ public class AttackState : IState
 
     private void AttackTarget(EnemyAI enemy)
     {
-
+      
+        enemy.enemyAnimator.SetBool("InRange", true);
+        enemy.transform.LookAt(enemy.player);
+        enemy.gun.ShootGun();
+       
     }
 }
