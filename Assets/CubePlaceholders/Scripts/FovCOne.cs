@@ -66,14 +66,18 @@ public class FovCOne : MonoBehaviour
                    
                     //tell character to run to target location, shoot target, etc;
                 }
-               
+
+            }
+            else if (Vector3.Angle(transform.forward, dirToTarget) >= viewAngle / 2)
+            {
+                GameManager.Instance.alert = false;
             }
            
         }
-        if (targetsInViewRadius.Length== 0)
+        if (targetsInViewRadius.Length == 0)
         {
             GameManager.Instance.alert = false;
-           
+
             // alert = false;
         }
     }

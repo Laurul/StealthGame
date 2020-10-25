@@ -24,8 +24,8 @@ public class AttackState : IState
     {
       
         enemy.enemyAnimator.SetBool("InRange", true);
-        enemy.transform.LookAt(enemy.player);
-        enemy.gun.ShootGun();
+       // enemy.transform.LookAt(enemy.player);
+        enemy.gun.allowedToFire = true;
        
     }
 }

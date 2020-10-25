@@ -25,6 +25,8 @@ public class ChaseState : IState
 
     private void ChaseAfterTarget(EnemyAI enemy)
     {
+        enemy.gun.allowedToFire = false;
+
         enemy.enemyAnimator.SetBool("EnemySpotted", true);
         enemy.enemyAnimator.SetBool("InRange", false);
         if(enemy.player != null)
