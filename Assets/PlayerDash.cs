@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerDash : MonoBehaviour
 {
-    [SerializeField] float dashSpeed = 5f;
-    [SerializeField] float dashCooldown = 1f;
+    
+ 
     [SerializeField] Image energyBar;
     bool dashing = false;
     Rigidbody rb;
@@ -34,29 +34,29 @@ public class PlayerDash : MonoBehaviour
         }
         if (energyBar.fillAmount >= 0.25f)
         {
-            if (Input.GetKeyDown(KeyCode.W) )
+            
+            if (Input.GetKey(KeyCode.W)&& Input.GetKeyDown(KeyCode.Space))
             {
                 DashDir(KeyCode.W, Vector3.forward);
                 energyBar.fillAmount -= 0.25f;
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.Space))
             {
                 DashDir(KeyCode.S, -Vector3.forward );
                 energyBar.fillAmount -= 0.25f;
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.Space))
             {
                 DashDir(KeyCode.D, Vector3.right );
                 energyBar.fillAmount -= 0.25f;
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.Space))
             {
                 DashDir(KeyCode.A, -Vector3.right);
                 energyBar.fillAmount -= 0.25f;
             }
         }
 
-        dashCooldown -= Time.deltaTime;
 
        
     }

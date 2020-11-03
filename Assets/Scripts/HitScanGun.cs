@@ -17,7 +17,7 @@ public class HitScanGun : MonoBehaviour
     // Start is called before the first frame update
     public void ShootGun()
     {
-       // InvokeRepeating("Shoot", 0f, fireRate);
+        // InvokeRepeating("Shoot", 0f, fireRate);
     }
 
 
@@ -37,31 +37,39 @@ public class HitScanGun : MonoBehaviour
             nextFire = Time.time + fireRate;
 
             StartCoroutine(ShotEffect());
-            player.ReceiveDamage(damage);
-            //RaycastHit hit;
-            //if (Physics.Raycast(gunBarrel.transform.position, gunBarrel.transform.forward, out hit, range,8))
-            //{
-            //    laserLine.SetPosition(1, hit.point);
+            //  player.ReceiveDamage(damage);
+            Vector3 relativePos = player.transform.position - transform.position;
+            RaycastHit hit;
+            if (Physics.Raycast(gunBarrel.transform.position, gunBarrel.transform.forward, out hit, range))
+            {
+                laserLine.SetPosition(1, hit.point);
 
-            //    if (hit.transform != null)
-            //    {
-            //        print(hit.transform.name);
-            //        hit.transform.gameObject.GetComponent<PlayerContoller>().ReceiveDamage(damage);
-            //    }
+                if (hit.transform != null)
+                {
+                    print(hit.transform.name);
+                    PlayerContoller player = hit.transform.gameObject.GetComponent<PlayerContoller>();
+                    if (player != null)
+                        player.ReceiveDamage(damage);
+                }
+                else
+                {
+                    print("HITTING NOTHING!!!");
+                }
 
-            //}
+            }
+
         }
 
-       
+
     }
 
 
 
-    void Shoot()
+    public void Shoot()
     {
-        
+
         RaycastHit hit;
-        if (Physics.Raycast(this.transform.position, this.transform.forward, out hit,range))
+        if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, range))
         {
 
             if (hit.transform != null)
@@ -72,7 +80,7 @@ public class HitScanGun : MonoBehaviour
 
         }
 
-        
+
 
     }
 

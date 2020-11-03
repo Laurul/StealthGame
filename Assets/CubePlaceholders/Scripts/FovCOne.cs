@@ -12,7 +12,7 @@ public class FovCOne : MonoBehaviour
     public LayerMask targetMask;
     public LayerMask obstacleMask;
     public float meshResolution;
-
+    EnemyManager EnemyInstance;
     public MeshFilter viewMeshFilter;
     Mesh viewMesh;
 
@@ -29,6 +29,7 @@ public class FovCOne : MonoBehaviour
     float f=0;
     private void Start()
     {
+        EnemyInstance = GetComponent<EnemyManager>();
         enemy = GetComponent<EnemyAI>();
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
@@ -61,7 +62,7 @@ public class FovCOne : MonoBehaviour
                 {
                     targets.Add(target);
                     //alert = true;
-                    GameManager.Instance.alert = true;
+                  EnemyInstance.alert = true;
                    
                    
                     //tell character to run to target location, shoot target, etc;
@@ -70,13 +71,13 @@ public class FovCOne : MonoBehaviour
             }
             else if (Vector3.Angle(transform.forward, dirToTarget) >= viewAngle / 2)
             {
-                GameManager.Instance.alert = false;
+                EnemyInstance.alert = false;
             }
            
         }
         if (targetsInViewRadius.Length == 0)
         {
-            GameManager.Instance.alert = false;
+            EnemyInstance.alert = false;
 
             // alert = false;
         }

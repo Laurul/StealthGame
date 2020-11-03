@@ -41,7 +41,7 @@ public class PlayerContoller : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
-        print(velocity.sqrMagnitude);
+
         if (velocity.sqrMagnitude != 0)
         {
             playerAnimator.SetBool("IsWalking", true);
@@ -85,5 +85,10 @@ public class PlayerContoller : MonoBehaviour
             //death audio clip
             Destroy(this.gameObject);
         }
+    }
+
+    public float  ReturnVelocity()
+    {
+        return velocity.sqrMagnitude;
     }
 }

@@ -12,10 +12,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject rangedAttackActive;
     [SerializeField] GameObject rangedAttackInactive;
 
-    [HideInInspector] public bool attack1=false;
-    [HideInInspector] public bool attack2=false;
-    [HideInInspector] public bool attack3=false;
     [HideInInspector] public int index = 1;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +25,11 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+           
             index = 1;
             heavyAttackActive.SetActive(true);
             heavyAttackInactive.SetActive(false);
@@ -36,8 +38,9 @@ public class PlayerAttack : MonoBehaviour
             rangedAttackActive.SetActive(false);
             rangedAttackInactive.SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2) )
         {
+           
             index = 2;
             heavyAttackActive.SetActive(false);
             heavyAttackInactive.SetActive(true);
@@ -46,8 +49,9 @@ public class PlayerAttack : MonoBehaviour
             rangedAttackActive.SetActive(false);
             rangedAttackInactive.SetActive(true);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha3))
+        else if(Input.GetKeyDown(KeyCode.Alpha3) )
         {
+         
             index = 3;
             heavyAttackActive.SetActive(false);
             heavyAttackInactive.SetActive(true);

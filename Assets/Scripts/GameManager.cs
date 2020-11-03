@@ -12,13 +12,13 @@ public class GameManager : MonoBehaviour
     [Header("Player and Enemy Properties")]
     public PlayerContoller Player;
     public EnemyAI Enemy;
-    public FovCOne EnemyFov;
+  
     [SerializeField] DetectShadow playerInShadow;
     [HideInInspector]
    public bool alert = false;
     [SerializeField] DialougueTrigger triggerDialogue;
     [SerializeField] DialogueManager dialogueManager;
-    [SerializeField] ScoreManager scoreManager;
+    public ScoreManager scoreManager;
     int totalEnemies;
     int currentEnenmies;
     float timer = 2.0f;
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
             }
            
         }
-        DetectPlayer();
+       // DetectPlayer();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             DestroyAllEnemies();
