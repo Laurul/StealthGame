@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 public class PatrolState : IState
 {
+   public bool chooseOnce = true;
+  
     public IState ActivateState(EnemyAI enemy)
     {
         if (enemy.navAgent == null)
@@ -11,7 +13,7 @@ public class PatrolState : IState
             enemy.navAgent = enemy.GetComponent<NavMeshAgent>();
         }
 
-
+       
         PatrolArea(enemy);
 
 
@@ -23,15 +25,31 @@ public class PatrolState : IState
         if (enemy.isIdle)
             return enemy.idle;
         else if (enemy.changeTarget == true)
+        {
+            enemy.chase.chooseOnce = true;
             return enemy.chase;
-        else if (enemy.changeTarget == false && enemy.isInvestigating == true)
-            return enemy.investigate;
-        else return enemy.patrol;
+        }
 
+        else if (enemy.changeTarget == false && enemy.isInvestigating == true)
+        {
+            enemy.investigate.chooseOnce = true;
+            return enemy.investigate;
+        }
+
+        else
+        {
+           // enemy.patrol.chooseOnce = true;
+            return enemy.patrol;
+        }
     }
 
     private void PatrolArea(EnemyAI enemy)
     {
+        if (enemy.UseRandomAnimation&&chooseOnce)
+        {
+            chooseOnce = false;
+            enemy.randomAnim.RandomPatrolAnim();
+        }
         enemy.enemyAnimator.SetBool("Idle", false);
         enemy.enemyAnimator.SetTrigger("FinishedInvestigation");
         enemy.navAgent.SetDestination(enemy.targets[enemy.allPaths[enemy.index]].position);

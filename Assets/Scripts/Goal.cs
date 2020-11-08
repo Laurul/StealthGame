@@ -11,7 +11,7 @@ public class Goal : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
-        unlock = SceneManager.GetActiveScene().buildIndex + 1;
+        //unlock = SceneManager.GetActiveScene().buildIndex + 1;
         levelFinish.SetActive(false);
     }
 

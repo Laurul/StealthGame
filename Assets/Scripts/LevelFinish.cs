@@ -7,6 +7,7 @@ public class LevelFinish : MonoBehaviour
 {
     int totalLevels = 5;
     int currentLvl;
+    [SerializeField] ScoreManager scoreManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,11 +39,18 @@ public class LevelFinish : MonoBehaviour
         {
             PlayerPrefs.SetInt("Level" + nextLevel.ToString(), 1);
         }
-        LoadNextLevel();
+        Time.timeScale = 0;
+        scoreManager.once = true;
+        //LoadNextLevel();
     }
 
-    void LoadNextLevel()
+    public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

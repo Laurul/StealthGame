@@ -5,18 +5,28 @@ using UnityEngine.AI;
 
 public class ChaseState : IState
 {
+    public bool chooseOnce = true;
     public IState ActivateState(EnemyAI enemy)
     {
         if (enemy.navAgent == null)
         {
             enemy.navAgent = enemy.GetComponent<NavMeshAgent>();
         }
+
         ChaseAfterTarget(enemy);
 
         if (enemy.inRange == true)
+        {
+            enemy.attack.chooseOnce = true;
             return enemy.attack;
+        }
+           
         else if (enemy.changeTarget == false)
-           return enemy.investigate;
+        {
+            enemy.investigate.chooseOnce = true;
+            return enemy.investigate;
+        }
+           
         else return enemy.chase;
 
         //  else if (enemy.isInvestigating==true)//||enemy.player==null)// if (enemy.changeTarget == false||enemy.player==null)->patrol
@@ -25,6 +35,12 @@ public class ChaseState : IState
 
     private void ChaseAfterTarget(EnemyAI enemy)
     {
+
+        if (enemy.UseRandomAnimation&&chooseOnce)
+        {
+            chooseOnce = false;
+            enemy.randomAnim.RandomChaseAnim();
+        }
         enemy.gun.allowedToFire = false;
 
         enemy.enemyAnimator.SetBool("EnemySpotted", true);
