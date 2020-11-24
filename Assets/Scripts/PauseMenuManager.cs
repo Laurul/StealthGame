@@ -17,7 +17,7 @@ public class PauseMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("TIME IS: " + Time.timeScale);
+       // print("TIME IS: " + Time.timeScale);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)

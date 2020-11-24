@@ -114,7 +114,7 @@ public class SpawnClone : MonoBehaviour
         Animator instanceAnim = instance.GetComponent<Animator>();
         yield return new WaitForSeconds(1f);
         instance.transform.position += instance.transform.forward * Time.deltaTime *300f;
-        RaycastHit[] objectsHit = Physics.SphereCastAll(instance.transform.position,4.5f, transform.forward);
+        RaycastHit[] objectsHit = Physics.SphereCastAll(instance.transform.position,2.0f, transform.forward);
         instanceAnim.SetBool("DoLightAttack", true);
         foreach (RaycastHit hit in objectsHit)
         {
@@ -136,7 +136,7 @@ public class SpawnClone : MonoBehaviour
         GameObject instance = Instantiate(cloneToSpawn, this.transform.position, parent.rotation);
         Animator instanceAnim = instance.GetComponent<Animator>();
         yield return new WaitForSeconds(3f);
-        RaycastHit[] objectsHit = Physics.SphereCastAll(instance.transform.position, 8f, transform.forward);
+        RaycastHit[] objectsHit = Physics.SphereCastAll(instance.transform.position, 4f, transform.forward);
         instanceAnim.SetBool("DoHeavyAttack", true);
         foreach (RaycastHit hit in objectsHit)
         {

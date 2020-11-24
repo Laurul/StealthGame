@@ -17,7 +17,7 @@ public class PlayerSoundStep : MonoBehaviour
     {
         if (playerController.ReturnVelocity() > 0)
         {
-            stepSphere.transform.localScale = new Vector3(3, 1, 3);
+            stepSphere.transform.localScale = new Vector3(1.8f, 1, 1.8f);
         }
         else
         {

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Utility;
+
 
 public class PlayerContoller : MonoBehaviour
 {
@@ -15,9 +17,16 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] PlayerAttack selectAttack;
     [SerializeField] SpawnClone cloneAttack;
     [SerializeField] Animator playerAnimator;
+    [SerializeField] Image energyBar;
+    [SerializeField] GameObject attackUI;
+    [SerializeField] FollowTarget cameraFollow;
+
+    PlayerVent pv;
     private float currentHealth = 0f;
+    [SerializeField] float rechargeCooldown = 0.5f;
     void Start()
     {
+        pv = GetComponent<PlayerVent>();
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         viewCam = Camera.main;
@@ -27,6 +36,21 @@ public class PlayerContoller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Time.timeScale == 1)
+        {
+            cameraFollow.offset = new Vector3(0, 7.5f, 0);
+        }
+        if (attackUI.activeSelf)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnClone>().enabled = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().enabled = true;
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnClone>().enabled = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().enabled = false;
+        }
         cloneAttack.index = selectAttack.index;
         //Vector3 mousePos = viewCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, viewCam.transform.position.y));
 
@@ -35,11 +59,19 @@ public class PlayerContoller : MonoBehaviour
 
         velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * movementSpeed;
 
+        rechargeCooldown -= Time.deltaTime;
+        if (pv.GetVentStatus() && rechargeCooldown <= 0f)
+        {
+            rechargeCooldown = 1f;
+            energyBar.fillAmount -= 0.18f;
+        }
+
         //transform.LookAt(transform.position + new Vector3(velocity.x, 0, velocity.z));
     }
 
     private void FixedUpdate()
     {
+        
         rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
 
         if (velocity.sqrMagnitude != 0)
@@ -56,6 +88,8 @@ public class PlayerContoller : MonoBehaviour
 
         
     }
+
+    
 
     public float ReturnMaxHealth()
     {

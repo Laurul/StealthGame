@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] DetectShadow playerInShadow;
     [HideInInspector]
    public bool alert = false;
-    [SerializeField] DialougueTrigger triggerDialogue;
+    public DialougueTrigger triggerDialogue;
     [SerializeField] DialogueManager dialogueManager;
     public ScoreManager scoreManager;
     int totalEnemies;
@@ -61,17 +61,22 @@ public class GameManager : MonoBehaviour
 
         if (Player != null)
         {
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                dialogueManager.dialogueUI.SetActive(true);
-               
-            }
+            //if (Input.GetKeyDown(KeyCode.O))
+            //{
+            //    dialogueManager.dialogueUI.SetActive(true);
 
-            if (dialogueManager.dialogueUI.activeSelf)
+            //}
+            if (dialogueManager.GetFInished())
+            {
+                triggerDialogue = null;
+
+            }
+            if (triggerDialogue != null)
             {
                 triggerDialogue.DialogueTrigger();
+               
                 dialogueManager.DisplaySentanceByIndex(dialogueManager.ReturnIndex());
-                if (Input.GetKeyDown(KeyCode.H))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
 
                     dialogueManager.IncreaseIndex();
@@ -84,10 +89,10 @@ public class GameManager : MonoBehaviour
            
         }
        // DetectPlayer();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DestroyAllEnemies();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    DestroyAllEnemies();
+        //}
     }
 
     private void DetectPlayer()

@@ -6,10 +6,15 @@ public class DialougueTrigger : MonoBehaviour
 {
 
     public DialougueObj dialogueObj;
-
+    public bool use;
 
     public void DialogueTrigger()
     {
-        FindObjectOfType<DialogueManager>().BeginDialogue(dialogueObj);
+        if (use)
+        {
+            FindObjectOfType<DialogueManager>().BeginDialogue(dialogueObj);
+            use = false;
+        }
+      
     }
 }

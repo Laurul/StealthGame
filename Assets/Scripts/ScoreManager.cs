@@ -81,7 +81,7 @@ public class ScoreManager : MonoBehaviour
 
         if (noDetection)
         {
-            //noDetection = false;
+            noDetection = false;
             int bonusDetect = 800;
             scoreBrackets[1].text = bonusDetect.ToString();
             totalScore += bonusDetect;
