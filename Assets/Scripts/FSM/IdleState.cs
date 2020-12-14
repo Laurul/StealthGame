@@ -32,11 +32,18 @@ public class IdleState : IState
 
     private void DoIdleMotion(EnemyAI enemy)
     {
+        enemy.enemyAnimator.SetBool("Idle", true);
         if (enemy.UseRandomAnimation && chooseOnce)
         {
             chooseOnce = false;
             enemy.randomAnim.RandomIdleAnim();
         }
+        else if (chooseOnce)
+        {
+            chooseOnce = false;
+            
+        }
+        
         enemy.navAgent.SetDestination(enemy.transform.position);
         //enemy.navAgent.SetDestination(enemy.player.position);
         //do idle bool false as soon as you finish the idle animation

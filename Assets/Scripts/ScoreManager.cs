@@ -96,7 +96,7 @@ public class ScoreManager : MonoBehaviour
             totalScore += timeBonus;
         }
 
-        if (allEnemiesKilled && once == false)
+        if (allEnemiesKilled&&once==false)
         {
             once = true;
             int eliminatedAll = 300;
@@ -110,7 +110,9 @@ public class ScoreManager : MonoBehaviour
 
         if (once)
         {
+
             scoreScreen.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

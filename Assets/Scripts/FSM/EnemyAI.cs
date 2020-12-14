@@ -97,20 +97,25 @@ public class EnemyAI : MonoBehaviour
         }
         // print(nameOfCurrentState);
 
-        //for (int i = 0; i < idlePos.Count; i++)
-        //{
-        //    print("index " + (i + 1) + " occupies possition " + idlePos[i]);
-        //}
-
-        foreach (int positionIndex in idlePos)
+        for (int i = 0; i < idlePos.Count; i++)
         {
-            if (index == positionIndex)
+            // print("index " + (i + 1) + " occupies possition " + idlePos[i]);
+            if (index == idlePos[i])
             {
                 isIdle = true;
-                idlePos.Remove(positionIndex);
+                idlePos.Remove(idlePos[i]);
             }
-        
         }
+
+        //foreach (int positionIndex in idlePos)
+        //{
+        //    if (index == positionIndex)
+        //    {
+        //        isIdle = true;
+        //        idlePos.Remove(positionIndex);
+        //    }
+        
+        //}
 
 
         if (isIdle)

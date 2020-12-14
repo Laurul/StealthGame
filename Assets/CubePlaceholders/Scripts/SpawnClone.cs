@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Animations;
@@ -53,7 +53,7 @@ public class SpawnClone : MonoBehaviour
         rechargeCooldown -= Time.deltaTime;
         if (energyBar.fillAmount < 1.0f && rechargeCooldown <= 0f)
         {
-            energyBar.fillAmount += 0.08f;
+            energyBar.fillAmount += 0.03f;
             rechargeCooldown = 1f;
         }
         if (Input.GetMouseButtonDown(0))
@@ -160,27 +160,27 @@ public class SpawnClone : MonoBehaviour
         RaycastHit[] hits;
         Vector3 oldPos = instance.transform.position;
         instanceAnim.SetBool("DoRangedAttack", true);
-        instance.transform.position += instance.transform.forward * Time.deltaTime * 600f;
+        instance.transform.position += instance.transform.forward * Time.deltaTime * 400f;
         float dist = Vector3.Distance(oldPos,instance.transform.position);
 
        CreateCylinderBetweenPoints(oldPos, instance.transform.position, 2f);
         yield return new WaitForSeconds(0.5f);
         Destroy(cylinderInstance.gameObject);
 
-        //hits = Physics.RaycastAll(oldPos, instance.transform.forward, dist);
+        hits = Physics.RaycastAll(oldPos, instance.transform.forward, dist);
 
-        //for (int i = 0; i < hits.Length; i++)
-        //{
-        //    RaycastHit hit = hits[i];
-        //    print(hit.transform.name);
-        //   EnemyAI enemy = hit.transform.GetComponent<EnemyAI>();
+        for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit hit = hits[i];
+            print(hit.transform.name);
+            EnemyAI enemy = hit.transform.GetComponent<EnemyAI>();
 
-        //    if (enemy)
-        //    {
-        //        Destroy(enemy);
-        //    }
-        //}
-        ////instanceAnim.SetBool("DoRangedAttack", false);
+            if (enemy)
+            {
+                Destroy(enemy);
+            }
+        }
+        //instanceAnim.SetBool("DoRangedAttack", false);
         yield return new WaitForSeconds(1.5f);
         Destroy(instance);
        

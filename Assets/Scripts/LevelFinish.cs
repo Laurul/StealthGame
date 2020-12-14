@@ -7,7 +7,7 @@ public class LevelFinish : MonoBehaviour
 {
     int totalLevels = 5;
     int currentLvl;
-    [SerializeField] ScoreManager scoreManager;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -28,19 +28,21 @@ public class LevelFinish : MonoBehaviour
             {
                 currentLvl = i;
                 SaveCurrentLevel();
+               
             }
         }
     }
 
     void SaveCurrentLevel()
     {
+       
         int nextLevel = currentLvl + 1;
         if (nextLevel <= totalLevels)
         {
             PlayerPrefs.SetInt("Level" + nextLevel.ToString(), 1);
         }
-        Time.timeScale = 0;
-        scoreManager.once = true;
+       
+       
         //LoadNextLevel();
     }
 
