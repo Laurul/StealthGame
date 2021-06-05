@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90a8a28955cf004eadb93f69ecf403e, type: 3}
+  m_Name: Tutorial3
+  m_EditorClassIdentifier: 
+  sentances:
+  - In different places of the map you will be able to see special tiles
+  - Using the action button when on the tiles will allow you to go to a secret path
+    underground
+  - These paths can be used as shortcuts to access new or secret areas in the level
+    as well
+  - You can use the underground paths to evade enemies as well
+  - Going underground will continiously consume energy. If the energy is depleted
+    then health will be consumed
+  - Once out of the underground path there will be a short cooldown rendering you
+    unable to use any vent for a period of time
+  - Scout ahead and manage your resources well so you are not caught offguard when
+    exiting and underground path

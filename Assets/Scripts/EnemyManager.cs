@@ -76,7 +76,7 @@ public class EnemyManager : MonoBehaviour
                     Enemy.isInvestigating = true;
 
                     timer -= Time.deltaTime;
-                    print("timer: " + timer);
+                    //print("timer: " + timer);
                     if (timer <= 0f)
                     {
                         Enemy.isInvestigating = false;

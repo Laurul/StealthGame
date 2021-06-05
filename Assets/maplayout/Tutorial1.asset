@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90a8a28955cf004eadb93f69ecf403e, type: 3}
+  m_Name: Tutorial1
+  m_EditorClassIdentifier: 
+  sentances:
+  - You are a ninja tasked with inflitrating a secret facility in northern Europe.
+  - A coalition of weapon manufacturarer and industrialists backed by various politicians
+    plan to start a new world war
+  - Hired bya mysterious employer you now sought to unravel the threads of the mysterious
+    complot against the world
+  - It all falls upon you to ensure the continuation of humanity as we know it
+  - You can move around by using W, A, S, D.
+  - 'In the left part of your screen you can see a red circle. That represents your
+    health. '
+  - Health is replenished automatically when starting a level. Health will not regenerate
+    when out of combat
+  - To the right of the health circle you can see a white bar. That bar represents
+    your action meter.
+  - Attacks or special actions greatly decreses the action meter. This meteer will
+    replenish over time when out of combat

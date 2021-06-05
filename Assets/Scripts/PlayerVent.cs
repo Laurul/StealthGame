@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerVent : MonoBehaviour
 {
-    //[SerializeField] GameObject transparentPath;
-   // MeshRenderer[] tiles;
+    GameObject[] tiles;
    public  bool isVented = false;
     bool doOnce = false;
    [SerializeField] Material transparentMat;
@@ -13,6 +12,7 @@ public class PlayerVent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tiles = GameObject.FindGameObjectsWithTag("transparent");
         //tiles = transparentPath.GetComponentsInChildren<MeshRenderer>();
         c = transparentMat.color;
         c.a = 1.0f;
@@ -23,8 +23,16 @@ public class PlayerVent : MonoBehaviour
     {
         if (isVented)
         {
-            c.a = 0.2f;
-            transparentMat.color = c;
+           foreach(GameObject tile in tiles)
+            {
+
+                var block = new MaterialPropertyBlock();
+
+          
+                block.SetColor("_BaseColor", Color.clear);
+
+                tile.GetComponent<Renderer>().SetPropertyBlock(block);
+            }
             if (doOnce == true)
             {
                 doOnce = false;
@@ -39,8 +47,17 @@ public class PlayerVent : MonoBehaviour
         }
         else
         {
-            c.a = 1f;
-            transparentMat.color = c;
+            foreach (GameObject tile in tiles)
+            {
+
+                var block = new MaterialPropertyBlock();
+
+
+                block.SetColor("_BaseColor", transparentMat.color) ;
+
+                tile.GetComponent<Renderer>().SetPropertyBlock(block);
+            }
+
             if (doOnce ==true)
             {
                 doOnce = false;

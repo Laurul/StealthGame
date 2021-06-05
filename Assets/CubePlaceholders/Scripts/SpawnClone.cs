@@ -1,7 +1,6 @@
 ﻿  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Animations;
 using UnityEngine.UI;
 
 
@@ -15,7 +14,7 @@ public class SpawnClone : MonoBehaviour
 
    
     [SerializeField] float coolDownClone = 2.0f;
-    [SerializeField] AnimatorController cloneAnimController;
+    [SerializeField] RuntimeAnimatorController cloneAnimController;
     AnimatorOverrideController aoc;
     float coolDown;
     float cloneTriggerTime;

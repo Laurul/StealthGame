@@ -13,12 +13,13 @@ public class ScoreManager : MonoBehaviour
     bool finishedFast =true;
     [Tooltip("Amount of time that the player can spend in the level and still recieve the finished level fast bonus")]
     [SerializeField] float fastLevelTimer = 180f;
-    
+    [SerializeField] Button restartButton;
+    [SerializeField] Button nextLevelButton;
 
     float scoreTimer = 6f;
     float timer;
    [HideInInspector] public bool once = false;
-    int totalScore=0;
+   [HideInInspector] public int totalScore=0;
 
     GameObject[] allEnemies;
     int killingSpreeIndex = 0;
@@ -34,7 +35,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("the score is: "+score);
+        //print("the score is: "+score);
         allEnemies = GameObject.FindGameObjectsWithTag("enemy");
 
         if (once == false)
@@ -114,5 +115,12 @@ public class ScoreManager : MonoBehaviour
             scoreScreen.SetActive(true);
             Time.timeScale = 0;
         }
+    }
+
+    public void DisplayRestartScreen()
+    {
+        once = true;
+        restartButton.gameObject.SetActive(true);
+        nextLevelButton.gameObject.SetActive(false);
     }
 }

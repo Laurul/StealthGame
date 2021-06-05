@@ -7,6 +7,7 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject optionsMenu;
+    [SerializeField] GameObject levels;
     
     public void StartGame()
     {
@@ -17,16 +18,23 @@ public class MainMenuManager : MonoBehaviour
     {
         optionsMenu.SetActive(true);
         mainMenu.SetActive(false);
+        levels.SetActive(false);
     }
 
     public void GoToMainMenu()
     {
         mainMenu.SetActive(true);
         optionsMenu.SetActive(false);
+        levels.SetActive(false);
     }
     public void QuitGame()
     {
         Application.Quit();
+    }
+    public void DisplayLevels()
+    {
+        levels.SetActive(true);
+        mainMenu.SetActive(false);
     }
 
 }

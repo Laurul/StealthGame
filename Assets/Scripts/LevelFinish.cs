@@ -22,15 +22,21 @@ public class LevelFinish : MonoBehaviour
 
     void CheckCurrentLevel()
     {
-        for(int i = 0; i < totalLevels; i++)
-        {
-            if(SceneManager.GetActiveScene().name=="Level" + i)
-            {
-                currentLvl = i;
-                SaveCurrentLevel();
-               
-            }
-        }
+        currentLvl = SceneManager.GetActiveScene().buildIndex;
+        SaveCurrentLevel();
+        //for(int i = 0; i < totalLevels; i++)
+        //{
+        //    if(SceneManager.GetActiveScene().name=="Level" + i)
+        //    {
+        //        currentLvl = i;
+        //        SaveCurrentLevel();
+
+        //    }
+        //    else
+        //    {
+        //        print(SceneManager.GetActiveScene().name);
+        //    }
+        //}
     }
 
     void SaveCurrentLevel()

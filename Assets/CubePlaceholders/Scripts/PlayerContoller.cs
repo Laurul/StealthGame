@@ -12,7 +12,8 @@ public class PlayerContoller : MonoBehaviour
     Rigidbody rb;
     Camera viewCam;
     Vector3 rotation;
-    [SerializeField] float maxHealth = 100f;
+    public float maxHealth = 100f;
+    public float maxEnergy = 100f;
     [SerializeField] Image healthOrb;
     [SerializeField] PlayerAttack selectAttack;
     [SerializeField] SpawnClone cloneAttack;
@@ -21,8 +22,11 @@ public class PlayerContoller : MonoBehaviour
     [SerializeField] GameObject attackUI;
     [SerializeField] FollowTarget cameraFollow;
 
+
     PlayerVent pv;
-    private float currentHealth = 0f;
+    [HideInInspector] public float currentHealth = 0f;
+    [HideInInspector] public float currentEnergy = 0f;
+    [HideInInspector] public int defense = 0;
     [SerializeField] float rechargeCooldown = 0.5f;
     void Start()
     {
@@ -31,6 +35,7 @@ public class PlayerContoller : MonoBehaviour
         anim = GetComponent<Animator>();
         viewCam = Camera.main;
         currentHealth = maxHealth;
+        currentEnergy = maxEnergy;
     }
 
     // Update is called once per frame
@@ -43,15 +48,19 @@ public class PlayerContoller : MonoBehaviour
         }
         if (attackUI.activeSelf)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnClone>().enabled = true;
+           // GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnClone>().enabled = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().enabled = true;
         }
         else
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnClone>().enabled = false;
+           // GameObject.FindGameObjectWithTag("Player").GetComponent<SpawnClone>().enabled = false;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().enabled = false;
         }
-        cloneAttack.index = selectAttack.index;
+        //cloneAttack.index = selectAttack.index;
+
+
+
+
         //Vector3 mousePos = viewCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, viewCam.transform.position.y));
 
         //print(mousePos);
@@ -60,18 +69,48 @@ public class PlayerContoller : MonoBehaviour
         velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * movementSpeed;
 
         rechargeCooldown -= Time.deltaTime;
-        if (pv.GetVentStatus() && rechargeCooldown <= 0f)
+        if (pv.GetVentStatus() && rechargeCooldown <= 0f && energyBar.fillAmount >= 0.08f)
         {
             rechargeCooldown = 1f;
-            energyBar.fillAmount -= 0.18f;
+            energyBar.fillAmount -= 0.08f;
         }
-
+        if (pv.GetVentStatus() && rechargeCooldown <= 0f && energyBar.fillAmount <= 0.08f)
+        {
+            rechargeCooldown = 1f;
+            ReceiveDamage(5f);
+        }
+        if (currentEnergy<maxEnergy&& rechargeCooldown <= 0f&&currentEnergy<=100f)
+        {
+            currentEnergy += 3f;
+            energyBar.fillAmount = currentEnergy / maxEnergy;
+            rechargeCooldown = 1f;
+        }else if (currentEnergy < maxEnergy && rechargeCooldown <= 0f && currentEnergy > 100f)
+        {
+            currentEnergy += 3f;
+            rechargeCooldown = 1f;
+        }
+        else if (currentEnergy > maxEnergy)
+        {
+            currentEnergy = maxEnergy;
+            rechargeCooldown = 1f;
+        }
         //transform.LookAt(transform.position + new Vector3(velocity.x, 0, velocity.z));
+
+        //if (pv.GetVentStatus())
+        //{
+        //    cloneAttack.enabled = false;
+
+        //}
+        //else
+        //{
+        //    cloneAttack.enabled = true;
+
+        //}
     }
 
     private void FixedUpdate()
     {
-        
+
         rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
 
         if (velocity.sqrMagnitude != 0)
@@ -86,10 +125,10 @@ public class PlayerContoller : MonoBehaviour
             playerAnimator.SetBool("IsWalking", false);
         }
 
-        
+
     }
 
-    
+
 
     public float ReturnMaxHealth()
     {
@@ -103,25 +142,37 @@ public class PlayerContoller : MonoBehaviour
 
     public void ReceiveDamage(float value)
     {
-        if (currentHealth > 0)
+        if (currentHealth > 100)
         {
-            currentHealth -= value;
-            if (healthOrb != null)
+            if (defense < value)
             {
-                healthOrb.fillAmount = currentHealth / maxHealth;
+                currentHealth -= value - defense;
             }
+            
         }
-        else
+        else if (currentHealth > 0)
+        {
+            if (defense < value)
+            {
+                currentHealth -= value - defense;
+                if (healthOrb != null)
+                {
+                    healthOrb.fillAmount = currentHealth / maxHealth;
+                }
+            }
+          
+        }
+        else if (currentHealth <= 0)
         {
             playerAnimator.SetBool("isDead", true);
             //death animation
             //stop player movement
             //death audio clip
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 
-    public float  ReturnVelocity()
+    public float ReturnVelocity()
     {
         return velocity.sqrMagnitude;
     }

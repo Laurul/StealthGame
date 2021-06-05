@@ -14,15 +14,15 @@ public class PlayerHealth : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    // Start is called before the first frame update
-    void Start()
+    public void AddHealth(float amount)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (health < 200f)
+        {
+            health += amount;
+        }
+       else
+        {
+            health = 200f;
+        }
     }
 }

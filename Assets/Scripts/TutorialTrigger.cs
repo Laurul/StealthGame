@@ -32,7 +32,7 @@ public class TutorialTrigger : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        GameManager.Instance.triggerDialogue = dialogueTrigger;
+       // GameManager.Instance.triggerDialogue = dialogueTrigger;
 
         dialogueTrigger.use = true;
         if (useCamera)

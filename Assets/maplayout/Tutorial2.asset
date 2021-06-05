@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90a8a28955cf004eadb93f69ecf403e, type: 3}
+  m_Name: Tutorial2
+  m_EditorClassIdentifier: 
+  sentances:
+  - To the left of the health circle you can see 3 icons
+  - Those icons represent the 3 different attacks you can have active at one time
+  - 'Each attack is mapped to buttons: 1, 2 and 3. You can change the current attack
+    by pressing the appropiate key'
+  - You can execute an attack by pressing left click. Each time you attack a significant
+    portion of your energy meter is depleted
+  - Your character does not attack directly. Each attack action spawns an shadow of
+    your character.
+  - Each shadow has a delay before attacking and has a different attack. Exercise
+    caution vefore deciding to engage the enemy

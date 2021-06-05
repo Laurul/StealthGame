@@ -8,6 +8,9 @@ public class PauseMenuManager : MonoBehaviour
 
     bool isPaused = false;
     [SerializeField] GameObject pauseMenuUI;
+    [SerializeField] AudioSource levelMusic;
+    [SerializeField] GameObject optionScreenUI;
+    [SerializeField] GameObject mainScreenUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,12 +40,14 @@ public class PauseMenuManager : MonoBehaviour
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
+        levelMusic.Pause();
         Time.timeScale = 0f;
         isPaused = true;
     }
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        levelMusic.UnPause();
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -55,9 +60,16 @@ public class PauseMenuManager : MonoBehaviour
        
     }
 
-    public void ShowMenu()
+    public void ShowOptionMenu()
     {
-        print("game options gonna be implemented soon");
+        optionScreenUI.SetActive(true);
+        mainScreenUI.SetActive(false);
+    }
+
+    public void ReturnToPauseMenu()
+    {
+     optionScreenUI.SetActive(false);
+        mainScreenUI.SetActive(true);
     }
     public bool PausedValue()
     {

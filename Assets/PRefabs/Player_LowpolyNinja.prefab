@@ -1,5 +1,96 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1719904539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1719904540}
+  - component: {fileID: 1719904541}
+  m_Layer: 8
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1719904540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719904539}
+  m_LocalRotation: {x: 0.6901249, y: 0, z: 0, w: 0.72369033}
+  m_LocalPosition: {x: 0, y: 2.557, z: -0.097}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2125764736067262192}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 87.28, y: 0, z: 0}
+--- !u!108 &1719904541
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719904539}
+  m_Enabled: 1
+  serializedVersion: 9
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 5
+  m_Range: 10
+  m_SpotAngle: 26.8
+  m_InnerSpotAngle: 13.6
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &58490233393045408
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,13 +869,12 @@ GameObject:
   - component: {fileID: 6411594306602561734}
   - component: {fileID: 6411594306602561728}
   - component: {fileID: 6411594306602561729}
-  - component: {fileID: 6411594306602561735}
   - component: {fileID: 6411594306602561732}
   - component: {fileID: 6411594306602561733}
   - component: {fileID: 6411594306602561754}
   m_Layer: 8
   m_Name: Player_LowpolyNinja
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -798,13 +888,14 @@ Transform:
   m_GameObject: {fileID: 3160227432418616547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.76, y: 2.9, z: 5.41}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1560398690800930899}
   - {fileID: 8076814989721144525}
   - {fileID: 6411594307484128488}
   - {fileID: 6411594306932154584}
   - {fileID: 6411594306255709008}
+  - {fileID: 1719904540}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -855,13 +946,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e266dd95cdf228645a55496c3dad734e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 5
   maxHealth: 100
+  maxEnergy: 100
   healthOrb: {fileID: 0}
   selectAttack: {fileID: 6411594306602561732}
-  cloneAttack: {fileID: 6411594306602561735}
+  cloneAttack: {fileID: 0}
   playerAnimator: {fileID: 8289499647236635530}
   energyBar: {fileID: 0}
+  attackUI: {fileID: 0}
+  cameraFollow: {fileID: 0}
+  currentHealth: 0
+  currentEnergy: 0
+  defense: 0
   rechargeCooldown: 0.5
 --- !u!114 &6411594306602561729
 MonoBehaviour:
@@ -876,25 +973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepSphere: {fileID: 6411594306932154587}
---- !u!114 &6411594306602561735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3160227432418616547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0e788a6ff627d4e86ddbe7dd04c7af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cloneToSpawn: {fileID: 3311012040796236153, guid: c838310900a0cac4db35f95a1b605239,
-    type: 3}
-  coolDownClone: 2
-  cloneAnimController: {fileID: 9100000, guid: fb204bb37ebda414891a811dd4f8ef43, type: 2}
-  index: 1
-  energyBar: {fileID: 0}
-  cylinderPrefab: {fileID: 0}
 --- !u!114 &6411594306602561732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,7 +980,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3160227432418616547}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b05126255aaa694abf4f8f00ab5fbc9, type: 3}
   m_Name: 
@@ -921,7 +999,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3160227432418616547}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54d27d64e2885dd489840edd0a6ea310, type: 3}
   m_Name: 
@@ -939,7 +1017,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fbfeeab137fb2e4cb7b18b85f68e1ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transparentPath: {fileID: 0}
+  isVented: 0
+  transparentMat: {fileID: 2100000, guid: 72a91703204119e4f84aad8c706e7651, type: 2}
 --- !u!1 &3522239266575948386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,7 +1809,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6411594306932154587}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

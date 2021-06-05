@@ -1,5 +1,126 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &578859389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 578859390}
+  - component: {fileID: 578859391}
+  m_Layer: 0
+  m_Name: PlayerSkillsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &578859390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578859389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4928770510233413062}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &578859391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578859389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3260cd790c76fa468c30b2546e70b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerName: bruh
+  playerReference: {fileID: 0}
+  scoreReference: {fileID: 4928770509782226791}
+  swapperReference: {fileID: 0}
+  specialAttack1: {fileID: 0}
+  Attributes:
+  - attribute: {fileID: 11400000, guid: a4bf4add657780e4b9af83a73d667ed6, type: 2}
+    amount: 1
+  - attribute: {fileID: 11400000, guid: 6ef7ee8272c2e2c43bd44b5871cbd8c5, type: 2}
+    amount: 1
+  - attribute: {fileID: 11400000, guid: b6c9d416d85f37f4395a30cb17c12b0b, type: 2}
+    amount: 1
+  PlayerSkills: []
+  health: 100
+  energy: 100
+  maxHealth: 100
+  maxEnergy: 100
+  m_PlayerXP: 0
+  m_playerLevel: 1
+--- !u!1 &993403113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993403114}
+  - component: {fileID: 993403115}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &993403114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993403113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4928770510233413062}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &993403115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993403113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed205d22c8079494a85ae27db4fc1ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allSkills:
+  - {fileID: 11400000, guid: d091250ae87205b4f959a7a32658093e, type: 2}
+  - {fileID: 11400000, guid: e33f0a32192fc7d4688119598f6005ea, type: 2}
+  - {fileID: 11400000, guid: ebda8be8864ce8b49a93f0c54025f3c3, type: 2}
+  - {fileID: 11400000, guid: 2cb27aaffdf2997428266d24e6b3d27b, type: 2}
+  - {fileID: 11400000, guid: 367c968473906fc47afe7499b2eb6e67, type: 2}
+  - {fileID: 11400000, guid: 1ae4f4715d25a4444b549a3938e3da1d, type: 2}
+  allAttacks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerStats: {fileID: 578859391}
+  playerController: {fileID: 0}
+  swapper: {fileID: 0}
+  attackHUD: {fileID: 0}
 --- !u!1 &4928770509485534114
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4928770509485534140}
   - component: {fileID: 4928770509485534141}
+  - component: {fileID: 1019744611}
   m_Layer: 0
   m_Name: PauseMenuManager
   m_TagString: Untagged
@@ -44,6 +166,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 0}
+  levelMusic: {fileID: 0}
+  optionScreenUI: {fileID: 0}
+  mainScreenUI: {fileID: 0}
+--- !u!114 &1019744611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928770509485534114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d84d844762f3714f956356f137f37ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterMixer: {fileID: 24100000, guid: bab0b572ff1588440a9cb1f3eba1433f, type: 2}
 --- !u!1 &4928770509532576294
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4928770509782226788
 Transform:
   m_ObjectHideFlags: 0
@@ -148,7 +286,10 @@ MonoBehaviour:
   - {fileID: 0}
   scoreScreen: {fileID: 0}
   fastLevelTimer: 180
+  restartButton: {fileID: 0}
+  nextLevelButton: {fileID: 0}
   once: 0
+  totalScore: 0
 --- !u!1 &4928770510233413063
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +321,8 @@ Transform:
   - {fileID: 4928770510797076865}
   - {fileID: 4928770509782226788}
   - {fileID: 4928770509485534140}
+  - {fileID: 578859390}
+  - {fileID: 993403114}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -235,6 +378,15 @@ MonoBehaviour:
     - world peace is at stake, you must not fail.
     - Go in silently or amount a mountain of bodies behind you
     - It all depends on you!
+    - You can move around by pressing W, A, S, D.
+    - 'On the bottom left corner you can see a red orb. That represent your health. '
+    - Health will not regenerate.
+    - 'To the right of the health orb you can see a black bar. That represents your
+      energy bar. '
+    - Energy bar will be depleated during special actions like dashing or attacking
+    - The energy bar will regenarate over time
+    - You can dash by pressing SPACE.
+  use: 1
 --- !u!114 &4928770510797076864
 MonoBehaviour:
   m_ObjectHideFlags: 0
