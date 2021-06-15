@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SmokeSkin
   m_EditorClassIdentifier: 
   Description: Increase max health by 15
-  Icon: {fileID: 21300000, guid: e7ef532ce6da0e441ae57c7c4d43dea8, type: 3}
+  Icon: {fileID: 21300000, guid: e6480a7a4cb093e419469fbc4d4b3109, type: 3}
   LevelNeeded: 1
-  XPNeeded: 50
+  XPNeeded: 10
   AffectedAttributes:
   - attribute: {fileID: 11400000, guid: a4bf4add657780e4b9af83a73d667ed6, type: 2}
     amount: 5

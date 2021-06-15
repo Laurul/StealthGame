@@ -42,7 +42,7 @@ public class ChaseState : IState
             enemy.randomAnim.RandomChaseAnim();
         }
         enemy.gun.allowedToFire = false;
-
+        enemy.navAgent.speed = 2.0f;
         enemy.enemyAnimator.SetBool("EnemySpotted", true);
         enemy.enemyAnimator.SetBool("InRange", false);
         if(enemy.player != null)

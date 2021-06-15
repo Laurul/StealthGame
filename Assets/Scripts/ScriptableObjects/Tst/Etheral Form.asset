@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Etheral Form
   m_EditorClassIdentifier: 
   Description: Damage taken by bullets is reduced by 10
-  Icon: {fileID: 21300000, guid: 21582675ecb6f0948ba5807b0dd12238, type: 3}
+  Icon: {fileID: 21300000, guid: 5f676a2e416e6a7468f9c47e6f335362, type: 3}
   LevelNeeded: 2
-  XPNeeded: 250
+  XPNeeded: 10
   AffectedAttributes:
   - attribute: {fileID: 11400000, guid: 6ef7ee8272c2e2c43bd44b5871cbd8c5, type: 2}
     amount: 3

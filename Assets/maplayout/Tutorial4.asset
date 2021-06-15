@@ -10,18 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b90a8a28955cf004eadb93f69ecf403e, type: 3}
-  m_Name: Tutorial3
+  m_Name: Tutorial4
   m_EditorClassIdentifier: 
   sentances:
-  - In different places of the map you will be able to see special tiles
-  - Using the action button when on the tiles will allow you to go to a secret path
-    underground
-  - These paths can be used as shortcuts to access new or secret areas in the level
-    as well
-  - You can use the underground paths to evade enemies as well
-  - Going underground will continiously consume energy. If the energy is depleted
-    then health will be consumed
-  - Once out of the underground path there will be a short cooldown rendering you
-    unable to use any vent for a period of time
-  - Scout ahead and manage your resources well so you are not caught offguard when
-    exiting and underground path
+  - Once the game is over you will be able to see multiple cards
+  - Each card gives you a passive or active ability.
+  - Each set of abilities is seperated vertically in different tiers. In order to
+    unlock a higher tier you must purchase a skill card from a previous tier.
+  - Skill cards from each tier are mutually exclusive. Once a card is purchased you
+    cannot undo it for the rest of your playthrough
+  - In order to aquire a card you will use the points gained throught a level.
+  - Try unloacking a skill with your current points!

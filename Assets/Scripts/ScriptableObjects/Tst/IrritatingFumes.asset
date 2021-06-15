@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Description: Every 10 seconds you can slow down the movement of an enemy if fully
     detected
-  Icon: {fileID: 21300000, guid: 883b871fd1d51454a8c429b085190938, type: 3}
+  Icon: {fileID: 21300000, guid: 0ff551260537e90428b0255f2432754f, type: 3}
   LevelNeeded: 3
   XPNeeded: 10
   AffectedAttributes:

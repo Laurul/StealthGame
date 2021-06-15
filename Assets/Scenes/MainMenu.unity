@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 137163618}
   - component: {fileID: 137163622}
   - component: {fileID: 137163621}
+  - component: {fileID: 137163623}
   m_Layer: 5
   m_Name: OptionsButton
   m_TagString: Untagged
@@ -337,7 +338,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.14698534, g: 0.11013707, b: 0.4245283, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -530,6 +531,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &137163623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137163616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b57b903c6c51345bf527c7fbc186cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageInvert: {fileID: 137163619}
+  OnHoverImage: {r: 1, g: 1, b: 1, a: 1}
+  textInvert: {fileID: 1942074863}
+  OnHoverText: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &220810684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,8 +1382,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ba3f1f87a1b716341935b018278d1811, type: 2}
-  m_sharedMaterial: {fileID: -8055491789269763387, guid: ba3f1f87a1b716341935b018278d1811,
+  m_fontAsset: {fileID: 11400000, guid: 4256950b6c5b99846a8a6bb0e5711b5c, type: 2}
+  m_sharedMaterial: {fileID: -9156653572475193271, guid: 4256950b6c5b99846a8a6bb0e5711b5c,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2582,6 +2599,7 @@ GameObject:
   - component: {fileID: 752705669}
   - component: {fileID: 752705673}
   - component: {fileID: 752705672}
+  - component: {fileID: 752705674}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -2630,7 +2648,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.14698534, g: 0.11013707, b: 0.4245283, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -2823,6 +2841,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &752705674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752705667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b57b903c6c51345bf527c7fbc186cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageInvert: {fileID: 752705670}
+  OnHoverImage: {r: 1, g: 1, b: 1, a: 1}
+  textInvert: {fileID: 1254075785}
+  OnHoverText: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &793056529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,6 +2871,7 @@ GameObject:
   - component: {fileID: 793056531}
   - component: {fileID: 793056535}
   - component: {fileID: 793056534}
+  - component: {fileID: 793056536}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -2885,7 +2920,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.14698534, g: 0.11013707, b: 0.4245283, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3078,6 +3113,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &793056536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793056529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b57b903c6c51345bf527c7fbc186cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageInvert: {fileID: 793056532}
+  OnHoverImage: {r: 1, g: 1, b: 1, a: 1}
+  textInvert: {fileID: 489230572}
+  OnHoverText: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &806400274
 GameObject:
   m_ObjectHideFlags: 0
@@ -4735,8 +4786,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ba3f1f87a1b716341935b018278d1811, type: 2}
-  m_sharedMaterial: {fileID: -8055491789269763387, guid: ba3f1f87a1b716341935b018278d1811,
+  m_fontAsset: {fileID: 11400000, guid: 4256950b6c5b99846a8a6bb0e5711b5c, type: 2}
+  m_sharedMaterial: {fileID: -9156653572475193271, guid: 4256950b6c5b99846a8a6bb0e5711b5c,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -7686,8 +7737,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Options
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ba3f1f87a1b716341935b018278d1811, type: 2}
-  m_sharedMaterial: {fileID: -8055491789269763387, guid: ba3f1f87a1b716341935b018278d1811,
+  m_fontAsset: {fileID: 11400000, guid: 4256950b6c5b99846a8a6bb0e5711b5c, type: 2}
+  m_sharedMaterial: {fileID: -9156653572475193271, guid: 4256950b6c5b99846a8a6bb0e5711b5c,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

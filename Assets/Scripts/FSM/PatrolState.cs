@@ -45,6 +45,7 @@ public class PatrolState : IState
 
     private void PatrolArea(EnemyAI enemy)
     {
+        enemy.navAgent.speed = 1.75f;
         if (enemy.UseRandomAnimation&&chooseOnce)
         {
             chooseOnce = false;

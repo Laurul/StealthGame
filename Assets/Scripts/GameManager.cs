@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Player and Enemy Properties")]
     public PlayerContoller Player;
     public EnemyAI Enemy;
+   EnemyAI[] enemies;
 
     [SerializeField] DetectShadow playerInShadow;
     [HideInInspector]
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
   
     private void Awake()
     {
+       
         if (Instance == null)
             Instance = this;
         else if (Instance != this)
@@ -48,7 +50,15 @@ public class GameManager : MonoBehaviour
             scoreManager.allEnemiesKilled = true;
         }
 
-
+        if (scoreManager.GetScoreScreenActive())
+        {
+            enemies = FindObjectsOfType<EnemyAI>();
+            Player.enabled = false;
+            foreach (EnemyAI enemy in enemies)
+            {
+                enemy.enabled = false;
+            }
+        }
 
         if (Player != null)
         {

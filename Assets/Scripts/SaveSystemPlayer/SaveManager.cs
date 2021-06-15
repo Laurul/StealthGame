@@ -13,7 +13,8 @@ public class SaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadData();
+        //LoadData();
+        //playerStats.ResetSkills();
     }
 
     public void SaveData()

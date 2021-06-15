@@ -113,7 +113,7 @@ public class ScoreManager : MonoBehaviour
         {
 
             scoreScreen.SetActive(true);
-            Time.timeScale = 0;
+           // Time.timeScale = 0;
         }
     }
 
@@ -122,5 +122,10 @@ public class ScoreManager : MonoBehaviour
         once = true;
         restartButton.gameObject.SetActive(true);
         nextLevelButton.gameObject.SetActive(false);
+    }
+
+    public bool GetScoreScreenActive()
+    {
+        return scoreScreen.activeSelf;
     }
 }

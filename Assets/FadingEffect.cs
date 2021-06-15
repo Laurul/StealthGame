@@ -9,12 +9,12 @@ public class FadingEffect : MonoBehaviour
     void Start()
     {
         img = GetComponent<Image>();
-        img.canvasRenderer.SetAlpha(0.01f);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        img.CrossFadeAlpha(0.5f, 1f, false);
+        img.color = new Color(1, 1, 1, Mathf.PingPong(Time.time, 1.8f) / 1.8f);
     }
 }

@@ -14,13 +14,17 @@ public class DialogueMnger : MonoBehaviour
     List<GameObject> images;
     bool allow = false;
     int nr = 0;
+    int i = 0;
 
     DialogueBox boxInstance;
     DialogueObj parentInstance;
 
+    string story = "";
+    float timeLeft = 0.25f;
     private void Start()
     {
-       
+        dialogue.text = "";
+
         if (Instance == null)
             Instance = this;
         else if (Instance != this)
@@ -40,50 +44,93 @@ public class DialogueMnger : MonoBehaviour
     {
         if (allow)
         {
+
+            timeLeft -= Time.deltaTime;
+            print(story.Length);
+            if (dialogue.text.Length < story.Length && timeLeft >= 0)
+            {
+                dialogue.text += story[i];
+               // story += dialogue.text[i];
+                i++;
+
+            }
+            else if (timeLeft < 0)
+            {
+                timeLeft = 0.25f;
+            }
+
+
             hudObj.SetActive(true);
+
+            if (nr <= images.Count)
+            {
+                if (images[nr - 1] != null)
+                    images[nr - 1].SetActive(true);
+
+                if (nr > 1 && images[nr - 2] != null)
+                {
+                    images[nr - 2].SetActive(false);
+                }
+            }
             if (Input.GetKeyDown(inputKey))
             {
 
+               
+
+
                 if (nr < boxInstance.sentances.Length)
                 {
-                   
-                    dialogue.text = boxInstance.sentances[nr];
+
+                    
+                    i = 0;
+                    story = boxInstance.sentances[nr];
                     nr++;
+                    dialogue.text = "";
+
+
+
                 }
                 else
                 {
-                    nr = 0;
+
                     hudObj.SetActive(false);
-                    if (images.Count != 0)
+                    if (images.Count != 0 && parentInstance.shouldCLoseImages())
                     {
                         foreach (GameObject image in images)
                         {
-                            image.SetActive(false);
+                            if (image != null)
+                                image.SetActive(false);
                         }
                     }
-
+                   
 
                     //textPanel.SetActive(false);
                     dialoguesTriggers.Remove(parentInstance);
                     Destroy(parentInstance.gameObject);
                     Time.timeScale = 1;
                     allow = false;
+                    nr = 0;
+
                 }
             }
         }
-        
+
     }
-    public void InitiateDialogue(DialogueBox dialogueObj,DialogueObj parent,List<GameObject> Objimages)
+    public void InitiateDialogue(DialogueBox dialogueObj, DialogueObj parent, List<GameObject> Objimages, bool timescale)
     {
         textPanel.SetActive(true);
-        Time.timeScale = 0;
+        if (timescale)
+        {
+            Time.timeScale = 0;
+        }
+
         images = Objimages;
-        dialogue.text = dialogueObj.sentances[nr];
+        story = dialogueObj.sentances[nr];
         nr++;
         allow = true;
         boxInstance = dialogueObj;
         parentInstance = parent;
 
-       
+
     }
 }

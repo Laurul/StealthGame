@@ -39,11 +39,11 @@ public class EnemyManager : MonoBehaviour
                 Enemy.changeTarget = true;
                 if (enemySoundDetection.GetAlertstatus()==true)
                 {
-                    Enemy.GetComponentInChildren<FadeColor>().IncreaseOpacity(0.05f);
+                    Enemy.GetComponentInChildren<FadeColor>().IncreaseOpacity(0.065f);
                 }
                 else
                 {
-                    Enemy.GetComponentInChildren<FadeColor>().IncreaseOpacity(0.01f);
+                    Enemy.GetComponentInChildren<FadeColor>().IncreaseOpacity(0.035f);
                 }
 
             }

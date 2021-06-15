@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public string PlayerName;
+   // public string PlayerName;
     //public int PLayerXP = 0;
     //public int PLayerLEvel = 1;
     //public int PlayerHP = 50;
@@ -92,6 +92,8 @@ public class PlayerStats : MonoBehaviour
         //playerReference.currentHealth = health;
         playerReference.maxEnergy = maxEnergy;
         //playerReference.currentEnergy = energy;
+
+       
     }
     private void Update()
     {
@@ -202,8 +204,8 @@ public class PlayerStats : MonoBehaviour
                 print("NO SKILL IS ACTIVE");
                 break;
             case 1:
-                // IncreaseMaxEnergy();
-                AddNewAttack();
+                 IncreaseMaxEnergy();
+                //AddNewAttack();
                 break;
             case 2:
                 IncreaseMaxHealth();
@@ -222,6 +224,16 @@ public class PlayerStats : MonoBehaviour
                 break;
         }
     }
+    public void ResetSkills()
+    {
+        foreach(PlayerAttributes attrbute in Attributes)
+        {
+            attrbute.amount = 1;
+        }
 
+        PlayerSkills.Clear();
+        m_PlayerXP = 0;
+        m_playerLevel = 1;
+    }
 
 }

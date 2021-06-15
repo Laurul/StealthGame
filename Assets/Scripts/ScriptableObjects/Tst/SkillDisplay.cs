@@ -2,26 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class SkillDisplay : MonoBehaviour
 {
     public Skills skill;
-    public Text skillName;
-    public Text skillDescription;
+    public TextMeshProUGUI skillName;
+    public TextMeshProUGUI skillDescription;
     public Image skillIcon;
-    public Text skillLevel;
-    public Text skillXpNeeded;
-    public Text skillAttribute;
-    public Text skillAttrAmmount;
+    public TextMeshProUGUI skillLevel;
+    public TextMeshProUGUI skillXpNeeded;
+    public TextMeshProUGUI skillAttribute;
+    public TextMeshProUGUI skillAttrAmmount;
+
+
+
 
     [SerializeField] PlayerStats m_playerHandler;
     [SerializeField] Image disabledSkill;
-    
+    [SerializeField] GameObject panelDescription;
+    [SerializeField] GameObject descriptionsContainer;
+
+
     // Start is called before the first frame update
     void Start()
     {
-       // m_playerHandler = this.GetComponentInParent<PlayerHandler>().Player;
+
+        // m_playerHandler = this.GetComponentInParent<PlayerHandler>().Player;
         m_playerHandler.onXPChange += ReactToChange;
         m_playerHandler.onLevelChange += ReactToChange;
 
@@ -30,7 +38,7 @@ public class SkillDisplay : MonoBehaviour
         {
             skill.SetValues(this.gameObject, m_playerHandler);
         }
-        
+
         EnableSkills();
         if (skill.turnOffSkills)
         {
@@ -38,14 +46,12 @@ public class SkillDisplay : MonoBehaviour
         }
     }
 
-
     public void EnableSkills()
     {
         if (m_playerHandler && skill && skill.EnableSkill(m_playerHandler))
         {
             TurnOnSkillIcon();
         }
-
         else if (m_playerHandler && skill && skill.CheckSkills(m_playerHandler))
         {
             this.GetComponent<Button>().interactable = true;
@@ -55,7 +61,7 @@ public class SkillDisplay : MonoBehaviour
         else
         {
             TurnOffSkillIcon();
-        } 
+        }
     }
 
     private void OnEnable()
@@ -74,7 +80,7 @@ public class SkillDisplay : MonoBehaviour
     private void TurnOnSkillIcon()
     {
         this.GetComponent<Button>().interactable = false;
-        disabledSkill.gameObject.SetActive(true);
+        disabledSkill.gameObject.SetActive(false);
         //this.transform.Find("IconParent").Find("Available").gameObject.SetActive(false);
         // this.transform.Find("IconParent").Find("Disabled").gameObject.SetActive(false);
     }
@@ -82,7 +88,7 @@ public class SkillDisplay : MonoBehaviour
     public void TurnOffSkillIcon()
     {
         this.GetComponent<Button>().interactable = false;
-        disabledSkill.gameObject.SetActive(false);
+        disabledSkill.gameObject.SetActive(true);
         //this.transform.Find("IconParent").Find("Available").gameObject.SetActive(true);
         //this.transform.Find("IconParent").Find("Disabled").gameObject.SetActive(true);
     }
@@ -99,12 +105,26 @@ public class SkillDisplay : MonoBehaviour
 
     public bool TurnOffSkill()
     {
-        return skill.DisableOtherSkills();
         
+        return skill.DisableOtherSkills();
+
     }
 
     public Skills RetrunDisplayedSkill()
     {
         return skill;
     }
+
+    public void TurnOnDescription()
+    {
+        foreach (Transform t in descriptionsContainer.transform)
+        {
+            if (t.gameObject.CompareTag("Description"))
+            {
+                t.gameObject.SetActive(false);
+            }
+        }
+        panelDescription.SetActive(true);
+    }
+
 }
